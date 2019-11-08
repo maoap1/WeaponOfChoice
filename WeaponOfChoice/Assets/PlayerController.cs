@@ -7,11 +7,15 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 200f;
     public float jumpSpeed = 200f;
+	public GameObject WeaponsBase;
+
+	public GameObject WeaponPrefab;
+	private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+		WeaponPrefab = WeaponsBase.GetComponent<BaseOfWeapons>().GetWeaponThatIs(GlobalFields.GetWeapon());
     }
         
 
