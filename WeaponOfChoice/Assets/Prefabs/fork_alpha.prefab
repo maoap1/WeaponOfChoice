@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6484894146291355298}
   - component: {fileID: 6484894146291355299}
-  - component: {fileID: 6484894146291355296}
+  - component: {fileID: 5349611395532320548}
   m_Layer: 0
   m_Name: fork_alpha
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6484894146291355296
+--- !u!114 &5349611395532320548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,5 +94,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd68815f1b7d1674f8cbe958f091d761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0.8
-  attackStrength: 10
+  Projectile: {fileID: 9076920563576171991, guid: 3013ed771829dc84e95aced6afedba6c,
+    type: 3}
