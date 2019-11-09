@@ -9,6 +9,7 @@ public abstract class Weapon : MonoBehaviour
 	public virtual int attackStrength => 10;
 	protected abstract bool Melee { get; }
 
+	public float ProjectileAlpha => Melee ? 0 : 1;
 	public GameObject Projectile;
 	public virtual float ProjectileDiesAfter => 500_000;
 	public virtual int projectileSpeed => 5;
@@ -28,7 +29,6 @@ public abstract class Weapon : MonoBehaviour
 				GetComponent<Transform>().rotation,
 				pc.transform)
 				.GetComponent<ProjectileBehaviour>();
-				//projectile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
 				projectile.dieAtDistance = ProjectileDiesAfter;
 			}
 			else
@@ -40,6 +40,11 @@ public abstract class Weapon : MonoBehaviour
 				.GetComponent<ProjectileBehaviour>();
 				projectile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
 			}
+			projectile.GetComponent<SpriteRenderer>().color = new Color(
+				projectile.GetComponent<SpriteRenderer>().color.r,
+				projectile.GetComponent<SpriteRenderer>().color.g,
+				projectile.GetComponent<SpriteRenderer>().color.b,
+				ProjectileAlpha);
 			projectile.GravityScale = ProjectileGravityScale;
 			projectile.Shooter = pc;
 			projectile.AimingAt = pc.LookingAt;
