@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     Controller2D controller;
     public GameObject WeaponsBase;
 
+    private Animator legAnimator;
+
     public Side LookingAt { get; private set; } = Side.Left;
     GameObject WeaponPrefab;
     private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
@@ -46,6 +48,9 @@ public class Player : MonoBehaviour
         WeaponPrefab = WeaponsBase.GetComponent<BaseOfWeapons>().GetWeaponThatIs(GlobalFields.GetWeapon());
         WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
         Weapon.pc = this;
+
+        legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
+        legAnimator.SetTrigger(gameObject.layer == 9 ? "setPlayer0": "setPlayer1"); // 9 is Player0 layer
     }
 
     void FixedUpdate()
@@ -68,10 +73,11 @@ public class Player : MonoBehaviour
 
 			Vector2 input = new Vector2(Input.Horizontal, 0);
 
-			if (Input.StartJumping && controller.collisions.below)
-			{
-				velocity.y = maxJumpVelocity;
-			}
+        if (Input.StartJumping && controller.collisions.below)
+        {
+            velocity.y = maxJumpVelocity;
+            legAnimator.SetTrigger("jump");
+        }
 
 			if (Input.EndJumping)
 			{

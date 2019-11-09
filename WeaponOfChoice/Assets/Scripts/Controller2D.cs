@@ -7,7 +7,7 @@ public class Controller2D : MonoBehaviour
 
     public LayerMask collisionMask;
 
-    const float skinWidth = .015f;
+    const float skinWidth = 0.001f;//0.015f
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
 
