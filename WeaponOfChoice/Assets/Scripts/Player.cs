@@ -70,7 +70,8 @@ public class Player : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        LookingAt = (Side)(int)(Mathf.Abs(Input.Horizontal) / Input.Horizontal);
+		if(Input.Horizontal != 0)
+			LookingAt = (Side)(int)(Mathf.Abs(Input.Horizontal) / Input.Horizontal);
 
         if (Input.Fired)
             Weapon.Attack();
