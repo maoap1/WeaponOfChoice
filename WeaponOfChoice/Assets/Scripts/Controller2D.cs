@@ -7,7 +7,7 @@ public class Controller2D : MonoBehaviour
 
     public LayerMask collisionMask;
 
-    const float skinWidth = .015f;
+    const float skinWidth = 0;//0.015f
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
 
@@ -46,7 +46,7 @@ public class Controller2D : MonoBehaviour
         float directionX = Mathf.Sign(velocity.x);
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
 
-        for (int i = 0; i < horizontalRayCount; i++)
+        for (int i = 1; i < horizontalRayCount; i++)
         {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);

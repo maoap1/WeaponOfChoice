@@ -7,13 +7,13 @@ public abstract class Weapon : MonoBehaviour
 	public Player pc { set; protected get; }
 	public float reloadTime = 0.8f;
 	public int attackStrength = 10;
-	public abstract void Attack();
-}
-public abstract class RangedWeapon : Weapon
-{
+	protected abstract bool Melee { get; }
+
 	public GameObject Projectile;
+	public float ProjectileDiesAfter;
+	public int projectileSpeed = 5;
 	float lastTimeAttacked = int.MinValue;
-	public override void Attack()
+	public void Attack()
 	{
 		if (lastTimeAttacked + reloadTime < Time.timeSinceLevelLoad)
 		{
@@ -25,10 +25,11 @@ public abstract class RangedWeapon : Weapon
 				.GetComponent<ProjectileBehaviour>();
 			projectile.Shooter = pc;
 			projectile.AimingAt = pc.LookingAt;
+			projectile.Speed = projectileSpeed;
+			projectile.damage = attackStrength;
+			if(Melee)
+				projectile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
 		}
 	}
-}
-public abstract class MeleeWeapon : Weapon
-{
 }
 

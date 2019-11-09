@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Fork : MeleeWeapon
+public sealed class Fork : Weapon
 {
-	public override void Attack()
-	{
-		throw new System.NotImplementedException();
-	}
+	protected override bool Melee => true;
 }

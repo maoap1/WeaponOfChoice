@@ -11,29 +11,30 @@ public class WeaponsSelector : MonoBehaviour
 	GameObject LeftKey { get => keysPictures[2]; set => keysPictures[2] = value; }
 	public GameObject weaponsBase;
 	public float WaitingTime;
+	public float weaponChoosingTime = 1;
 
 	BaseOfWeapons weapons => weaponsBase.GetComponent<BaseOfWeapons>();
 
 	System.Random random = new System.Random();
-	float weaponChoosingTime;
 	float startTime;
 	float usedTime;
 	bool used = false;
+	bool usedSecondTime = false;
 
 	InputResults Input => GetComponent<InputManager>().CurrInput;
 
 	void Start()
-    {
-		float startTime = Time.timeSinceLevelLoad;
+	{
+		startTime = Time.timeSinceLevelLoad;
 		for (int i = 0; i < keysPictures.Length; i++)
 		{
 			keysPictures[i] = Instantiate(keysPictures[i], transform);
 		}
 	}
 
-    void FixedUpdate()
-    {
-        if(Time.timeSinceLevelLoad > startTime + WaitingTime && !used)
+	void FixedUpdate()
+	{
+		if (Time.timeSinceLevelLoad > startTime + WaitingTime && !used)
 		{
 			used = true;
 			usedTime = Time.timeSinceLevelLoad;
@@ -42,32 +43,36 @@ public class WeaponsSelector : MonoBehaviour
 			int currIndex;
 			for (int i = 0; i < count; i++)
 			{
-				while(usedIndexes.Contains(currIndex = random.Next() % weapons.WeaponsPrefabs.Count))
+				while (usedIndexes.Contains(currIndex = random.Next() % weapons.WeaponsPrefabs.Count))
 				{ }
 				usedIndexes.Add(currIndex);
 			}
-			for(int i = 0; i < keysPictures.Length; i++)
+			for (int i = 0; i < keysPictures.Length; i++)
 				InstantiateWithPosOf(weapons.WeaponsPrefabs[usedIndexes[
 					Mathf.Min(i, usedIndexes.Count - 1)]], transform, i);
 		}
-		if(used)
+		if (used && !usedSecondTime && (Input.StartJumping || Input.EndJumping || (Input.Horizontal != 0)))
 		{
+			int index = 0;
 			if (Input.StartJumping || Input.EndJumping)
-				GlobalFields.SetWeapon(weapons.GetWeaponTypeOf(
-					keysPictures[0].GetComponent<Weapon>()));
-			else if(Input.Horizontal > 0)
-				GlobalFields.SetWeapon(weapons.GetWeaponTypeOf(
-					keysPictures[1].GetComponent<Weapon>()));
+				index = 0;
 			else if (Input.Horizontal > 0)
-				GlobalFields.SetWeapon(weapons.GetWeaponTypeOf(
-					keysPictures[2].GetComponent<Weapon>()));
+				index = 1;
+			else if (Input.Horizontal < 0)
+				index = 2;
+			else
+				throw new System.Exception("That doesn't make sense! :O");
+			usedSecondTime = true;
+			GlobalFields.SetWeapon(weapons.GetWeaponTypeOf(
+					keysPictures[index].GetComponent<Weapon>()));
+			//Debug.Log("done - index = " + index.ToString());
 		}
-		else if(used && usedTime + weaponChoosingTime < Time.timeSinceLevelLoad)
+		else if (usedSecondTime && usedTime + weaponChoosingTime < Time.timeSinceLevelLoad)
 		{
 			GlobalFields.SetWeapon(weapons.GetWeaponTypeOf(
 					keysPictures[random.Next(3)].GetComponent<Weapon>()));
 		}
-    }
+	}
 	private void InstantiateWithPosOf(GameObject toInstantiate, Transform parent, int positionerIndex)
 	{
 		GameObject newObj = Instantiate(toInstantiate, parent.transform);
