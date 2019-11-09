@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         bodyAnimator.SetTrigger(player); 
     }
 
+    // Input musi byt v Update(), aby to dobre fungovalo. Kdyby byl ve FixedUpdate(), tak se nemusi zavolat, i kdyz se ta klavesa zmackne
     void Update()
     {
         if (Input.GetKeyDown(jumpKey))
