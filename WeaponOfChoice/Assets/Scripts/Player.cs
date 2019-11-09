@@ -30,12 +30,13 @@ public class Player : MonoBehaviour
     public GameObject WeaponsBase;
 
     private Animator legAnimator;
+    private Animator bodyAnimator;
 
     public Side LookingAt { get; private set; } = Side.Left;
     GameObject WeaponPrefab;
     private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
 
-    InputResults Input => GetComponent<InputManager>().CurrInput;
+    InputResults Input2 => GetComponent<InputManager>().CurrInput;
 
     void Start()
     {
@@ -49,8 +50,11 @@ public class Player : MonoBehaviour
         WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
         Weapon.pc = this;
 
+        string player = gameObject.layer == 9 ? "setPlayer0" : "setPlayer1"; // 9 is Player0 layer
         legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
-        legAnimator.SetTrigger(gameObject.layer == 9 ? "setPlayer0": "setPlayer1"); // 9 is Player0 layer
+        legAnimator.SetTrigger(player);
+        bodyAnimator = gameObject.transform.Find("Body").gameObject.GetComponent<Animator>();
+        bodyAnimator.SetTrigger(player); 
     }
 
     void FixedUpdate()
@@ -71,15 +75,22 @@ public class Player : MonoBehaviour
 				velocity.y = 0;
 			}
 
-			Vector2 input = new Vector2(Input.Horizontal, 0);
+			Vector2 input = new Vector2(Input2.Horizontal, 0);
 
-        if (Input.StartJumping && controller.collisions.below)
-        {
-            velocity.y = maxJumpVelocity;
-            legAnimator.SetTrigger("jump");
-        }
 
-			if (Input.EndJumping)
+            if (Input2.StartJumping)
+            //if (Input.GetKeyDown(jumpName))
+            {
+                Debug.Log("Jump");
+            }
+            if (Input2.StartJumping && controller.collisions.below)
+            {
+                Debug.Log("Air");
+                velocity.y = maxJumpVelocity;
+                legAnimator.SetTrigger("jump");
+            }
+
+			if (Input2.EndJumping)
 			{
 				if (velocity.y > minJumpVelocity)
 				{
@@ -92,10 +103,10 @@ public class Player : MonoBehaviour
 			velocity.y += gravity * Time.deltaTime;
 			controller.Move(velocity * Time.deltaTime);
 
-			if (Input.Horizontal != 0)
-				LookingAt = (Side)(int)(Mathf.Abs(Input.Horizontal) / Input.Horizontal);
+			if (Input2.Horizontal != 0)
+				LookingAt = (Side)(int)(Mathf.Abs(Input2.Horizontal) / Input2.Horizontal);
 
-			if (Input.Fired)
+			if (Input2.Fired)
 				Weapon.Attack();
 		}
     }
