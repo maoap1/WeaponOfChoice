@@ -34,4 +34,29 @@ public static class GlobalFields
 				return Second;
 		}
 	}
+	public static void SetWeapon(WeaponsTypes wt)
+	{
+		if (somethingTaken)
+		{
+			somethingTaken = false;
+			if (firstTaken)
+			{
+				firstTaken = false;
+				Second = wt;
+			}
+			else
+				First = wt;
+		}
+		else
+		{
+			somethingTaken = true;
+			if (random.Next(2) == 0)
+			{
+				firstTaken = true;
+				First = wt;
+			}
+			else
+				Second = wt;
+		}
+	}
 }
