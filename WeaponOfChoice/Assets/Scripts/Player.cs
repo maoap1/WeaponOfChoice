@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
 		get => _currHealth;
 		set => Dead = ((_currHealth = value) <= 0);
 	}
-	bool alreadyDead = false; 
+	bool alreadyDead = false;
+    public KeyCode jumpKey;
+
 	public bool Dead { get; private set; } = false;
 	public static readonly int MAX_HEALTH = 100;
     public float maxJumpHeight = 4;
@@ -38,6 +40,9 @@ public class Player : MonoBehaviour
     private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
 
     InputResults Input2 => GetComponent<InputManager>().CurrInput;
+
+    private bool jumpKeyPressed = false;
+    private bool jumpKeyReleased = false;
 
     void Start()
     {
@@ -70,6 +75,19 @@ public class Player : MonoBehaviour
 		}
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(jumpKey))
+        {
+            jumpKeyPressed = true;
+            Debug.Log("Jump");
+        }
+        if (Input.GetKeyUp(jumpKey))
+        {
+            jumpKeyReleased = true;
+        }
+    }
+
     void FixedUpdate()
     {
 		if (Dead)
@@ -90,21 +108,20 @@ public class Player : MonoBehaviour
 
 			Vector2 input = new Vector2(Input2.Horizontal, 0);
 
-
-            if (Input2.StartJumping)
-            //if (Input.GetKeyDown(jumpName))
+            if (jumpKeyPressed)
             {
-                Debug.Log("Jump");
-            }
-            if (Input2.StartJumping && controller.collisions.below)
-            {
-                Debug.Log("Air");
-                velocity.y = maxJumpVelocity;
-                legAnimator.SetTrigger("jump");
+                jumpKeyPressed = false;
+                if (controller.collisions.below)
+                {
+                    Debug.Log("Air");
+                    velocity.y = maxJumpVelocity;
+                    legAnimator.SetTrigger("jump");
+                }
             }
 
-			if (Input2.EndJumping)
+            if (jumpKeyReleased)
 			{
+                jumpKeyReleased = false;
 				if (velocity.y > minJumpVelocity)
 				{
 					velocity.y = minJumpVelocity;
