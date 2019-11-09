@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GlobalFields
 {
+	#region weapons selection
 	static System.Random random = new System.Random();
 	public static WeaponsTypes First { private get; set; } = WeaponsTypes.Toaster;//TODO
 	static bool firstTaken = false;
@@ -58,5 +59,17 @@ public static class GlobalFields
 			else
 				Second = wt;
 		}
+	}
+	#endregion
+
+	public static int FirstPoints = 0;
+	public static int SecondPoints = 0;
+
+	public static	 void ILost(Transform me)
+	{
+		if (me.gameObject.layer == 9) //9 znamena Player0
+			SecondPoints++;
+		else
+			FirstPoints++;
 	}
 }
