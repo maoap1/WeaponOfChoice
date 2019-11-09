@@ -8,8 +8,8 @@ public class ProjectileBehaviour : MonoBehaviour
 
 	public Side AimingAt;
 	public Player Shooter;
-	public int Speed = 5;
-	public int damage = 25;
+	public int Speed { get; set; } = 5;
+	public int damage { get; set; } = 25;
 
 	private bool dead = false;
 
