@@ -25,7 +25,19 @@ public class BaseOfWeapons : MonoBehaviour
 			case WeaponsTypes.Toaster:
 				return GetWeaponThat(w => w is Toaster);
 			default:
-				return null;
+				throw new NotImplementedException();
+		}
+	}
+	public WeaponsTypes GetWeaponTypeOf(Weapon weapon)
+	{
+		switch (weapon)
+		{
+			case Fork f:
+				return WeaponsTypes.Fork;
+			case Toaster t:
+				return WeaponsTypes.Toaster;
+			default:
+				throw new NotImplementedException();
 		}
 	}
 }
