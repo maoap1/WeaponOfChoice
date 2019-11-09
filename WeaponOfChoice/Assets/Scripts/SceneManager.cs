@@ -24,7 +24,7 @@ public class SceneManager : MonoBehaviour
 
 	public void LoadScene(string sceneName)
 	{
-		if (!FadeAtEnd)
+		if (!endFading)
 		{
 			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
 		}

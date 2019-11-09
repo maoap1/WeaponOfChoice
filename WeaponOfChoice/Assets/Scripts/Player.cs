@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(InputManager))]
-
 [RequireComponent(typeof(Controller2D),typeof(InputManager))]
 public class Player : MonoBehaviour
 {
 	private int _currHealth = MAX_HEALTH;
 	public int CurrHealth {
 		get => _currHealth;
-		set => Dead = (_currHealth = value) > 0;
+		set => Dead = ((_currHealth = value) <= 0);
 	}
+	bool alreadyDead = false; 
 	public bool Dead { get; private set; } = false;
 	public static readonly int MAX_HEALTH = 100;
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
+	public GameObject SceneManager;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
     float moveSpeed = 6;
@@ -55,13 +55,23 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+		if (Dead)
+		{
+			if(!alreadyDead)
+			{
+				alreadyDead = true;
+				GlobalFields.ILost(transform);
+				SceneManager.GetComponent<SceneManager>().LoadScene("WeaponChoosing");
+			}
+		}
+		else
+		{
+			if (controller.collisions.above || controller.collisions.below)
+			{
+				velocity.y = 0;
+			}
 
-        if (controller.collisions.above || controller.collisions.below)
-        {
-            velocity.y = 0;
-        }
-
-        Vector2 input = new Vector2(Input.Horizontal, 0);
+			Vector2 input = new Vector2(Input.Horizontal, 0);
 
         if (Input.StartJumping && controller.collisions.below)
         {
@@ -69,23 +79,24 @@ public class Player : MonoBehaviour
             legAnimator.SetTrigger("jump");
         }
 
-        if (Input.EndJumping)
-        {
-            if (velocity.y > minJumpVelocity)
-            {
-                velocity.y = minJumpVelocity;
-            }
-        }
+			if (Input.EndJumping)
+			{
+				if (velocity.y > minJumpVelocity)
+				{
+					velocity.y = minJumpVelocity;
+				}
+			}
 
-        float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+			float targetVelocityX = input.x * moveSpeed;
+			velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+			velocity.y += gravity * Time.deltaTime;
+			controller.Move(velocity * Time.deltaTime);
 
-		if(Input.Horizontal != 0)
-			LookingAt = (Side)(int)(Mathf.Abs(Input.Horizontal) / Input.Horizontal);
+			if (Input.Horizontal != 0)
+				LookingAt = (Side)(int)(Mathf.Abs(Input.Horizontal) / Input.Horizontal);
 
-        if (Input.Fired)
-            Weapon.Attack();
+			if (Input.Fired)
+				Weapon.Attack();
+		}
     }
 }
