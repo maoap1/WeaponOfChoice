@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-	public PlayerController pc { set; protected get; }
+	public Player pc { set; protected get; }
 	public float reloadTime = 0.8f;
 	public int attackStrength = 10;
 	public abstract void Attack();
