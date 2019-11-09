@@ -12,22 +12,23 @@ public abstract class Weapon : MonoBehaviour
 public abstract class RangedWeapon : Weapon
 {
 	public GameObject Projectile;
+	float lastTimeAttacked = int.MinValue;
 	public override void Attack()
 	{
-		throw new System.NotImplementedException();
+		if (lastTimeAttacked + reloadTime < Time.timeSinceLevelLoad)
+		{
+			lastTimeAttacked = Time.timeSinceLevelLoad;
+			ProjectileBehaviour projectile =
+				Instantiate(Projectile,
+				GetComponent<Transform>().position,
+				GetComponent<Transform>().rotation)
+				.GetComponent<ProjectileBehaviour>();
+			projectile.Shooter = pc;
+			projectile.AimingAt = pc.LookingAt;
+		}
 	}
 }
 public abstract class MeleeWeapon : Weapon
-{
-}
-public sealed class Fork : MeleeWeapon
-{
-	public override void Attack()
-	{
-		throw new System.NotImplementedException();
-	}
-}
-public sealed class Toaster : RangedWeapon
 {
 }
 
