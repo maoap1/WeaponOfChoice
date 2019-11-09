@@ -6,6 +6,13 @@ using System.Collections;
 [RequireComponent(typeof(Controller2D),typeof(InputManager))]
 public class Player : MonoBehaviour
 {
+	private int _currHealth = MAX_HEALTH;
+	public int CurrHealth {
+		get => _currHealth;
+		set => Dead = (_currHealth = value) > 0;
+	}
+	public bool Dead { get; private set; } = false;
+	public static readonly int MAX_HEALTH = 100;
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
@@ -40,7 +47,6 @@ public class Player : MonoBehaviour
         WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
         Weapon.pc = this;
     }
-
 
     void FixedUpdate()
     {
