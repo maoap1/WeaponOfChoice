@@ -829,6 +829,7 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
+  SceneManager: {fileID: 0}
   WeaponsBase: {fileID: 729797891}
 --- !u!114 &1109905376
 MonoBehaviour:
@@ -897,7 +898,7 @@ Transform:
   m_GameObject: {fileID: 1109905374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.24, y: -1.61, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 1072482431}
   - {fileID: 353943875}
@@ -1216,7 +1217,7 @@ Transform:
   m_GameObject: {fileID: 2012653751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.94, y: -1.43, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 1730919484}
   - {fileID: 1519601320}
@@ -1238,6 +1239,7 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
+  SceneManager: {fileID: 0}
   WeaponsBase: {fileID: 729797891}
 --- !u!114 &2012653754
 MonoBehaviour:
