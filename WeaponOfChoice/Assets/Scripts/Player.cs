@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 [RequireComponent(typeof(Controller2D),typeof(InputManager))]
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
     private Animator legAnimator;
     private Animator bodyAnimator;
 
-    public Side LookingAt { get; private set; } = Side.Left;
+    public Side LookingAt { get; private set; } = Side.Right;
     GameObject WeaponPrefab;
     private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
 
@@ -54,7 +55,19 @@ public class Player : MonoBehaviour
         legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
         legAnimator.SetTrigger(player);
         bodyAnimator = gameObject.transform.Find("Body").gameObject.GetComponent<Animator>();
-        bodyAnimator.SetTrigger(player); 
+        bodyAnimator.SetTrigger(player);
+
+		switch (Weapon)
+		{
+			case Nokia n:
+				bodyAnimator.SetTrigger("setNokia");
+				break;
+			case Toaster t:
+				bodyAnimator.SetTrigger("setToaster");
+				break;
+			default:
+				throw new NotImplementedException();
+		}
     }
 
     void FixedUpdate()
@@ -104,10 +117,21 @@ public class Player : MonoBehaviour
 			controller.Move(velocity * Time.deltaTime);
 
 			if (Input2.Horizontal != 0)
+			{
+				Side old = LookingAt;
 				LookingAt = (Side)(int)(Mathf.Abs(Input2.Horizontal) / Input2.Horizontal);
+				if (old != LookingAt)
+					gameObject.transform.localScale = new Vector3(
+						-1 * gameObject.transform.localScale.x,
+						gameObject.transform.localScale.y
+						);
+			}
 
 			if (Input2.Fired)
-				Weapon.Attack();
+			{
+				if(Weapon.Attack())
+					bodyAnimator.SetTrigger("setAttack");
+			}
 		}
     }
 }

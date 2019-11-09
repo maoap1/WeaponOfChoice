@@ -20,8 +20,8 @@ public class BaseOfWeapons : MonoBehaviour
 	public GameObject GetWeaponThatIs(WeaponsTypes type)
 	{
 		switch(type){
-			case WeaponsTypes.Fork:
-				return GetWeaponThat(w => w is Fork);
+			case WeaponsTypes.Nokia:
+				return GetWeaponThat(w => w is Nokia);
 			case WeaponsTypes.Toaster:
 				return GetWeaponThat(w => w is Toaster);
 			default:
@@ -32,8 +32,8 @@ public class BaseOfWeapons : MonoBehaviour
 	{
 		switch (weapon)
 		{
-			case Fork f:
-				return WeaponsTypes.Fork;
+			case Nokia f:
+				return WeaponsTypes.Nokia;
 			case Toaster t:
 				return WeaponsTypes.Toaster;
 			default:
