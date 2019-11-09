@@ -4,11 +4,11 @@ using UnityEngine;
 
 public static class GlobalFields
 {
-	static System.Random random;
-	public static WeaponsTypes First { private get; set; }
+	static System.Random random = new System.Random();
+	public static WeaponsTypes First { private get; set; } = WeaponsTypes.Toaster;//TODO
 	static bool firstTaken = false;
 	static bool somethingTaken = false;
-	public static WeaponsTypes Second { private get; set; }
+	public static WeaponsTypes Second { private get; set; } = WeaponsTypes.Toaster;
 	public static WeaponsTypes GetWeapon()
 	{
 		if (somethingTaken)
@@ -25,7 +25,7 @@ public static class GlobalFields
 		else
 		{
 			somethingTaken = true;
-			if (random.Next(1) == 0)
+			if (random.Next(2) == 0)
 			{
 				firstTaken = true;
 				return First;
