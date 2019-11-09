@@ -7,7 +7,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
 
 	public Side AimingAt;
-	public PlayerController Shooter;
+	public Player Shooter;
 	public int Speed = 5;
 
     // Update is called once per frame
