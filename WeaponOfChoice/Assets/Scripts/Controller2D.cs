@@ -46,7 +46,7 @@ public class Controller2D : MonoBehaviour
         float directionX = Mathf.Sign(velocity.x);
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
 
-        for (int i = 1; i < horizontalRayCount; i++)
+        for (int i = 1; i < horizontalRayCount; i++) // TODO i = 1 zkusit; bylo 0
         {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);

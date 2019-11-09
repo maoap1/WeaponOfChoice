@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c0ec893a700134d9ba892407323a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpKey: 273
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -1175,6 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c0ec893a700134d9ba892407323a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpKey: 119
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
