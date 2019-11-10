@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Horizontal1
   jumpName: 273
-  attackName: 0
+  attackName: 108
 --- !u!4 &1109905379
 Transform:
   m_ObjectHideFlags: 0
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Horizontal0
   jumpName: 119
-  attackName: 0
+  attackName: 32
 --- !u!1 &2034723769
 GameObject:
   m_ObjectHideFlags: 0

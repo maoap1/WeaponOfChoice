@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private Animator legAnimator;
     private Animator bodyAnimator;
 
-    public Side LookingAt { get; private set; } = Side.Right;
+    public Side lookingAt = Side.Right;
     GameObject WeaponPrefab;
     private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
 
@@ -57,12 +57,22 @@ public class Player : MonoBehaviour
         WeaponPrefab = WeaponsBase.GetComponent<BaseOfWeapons>().GetWeaponThatIs(GlobalFields.GetWeapon());
         WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
         Weapon.Player = this;
+		WeaponPrefab.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
 
-        string player = gameObject.layer == 9 ? "setPlayer0" : "setPlayer1"; // 9 is Player0 layer
+		string player = gameObject.layer == 9 ? "setPlayer0" : "setPlayer1"; // 9 is Player0 layer
         legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
         legAnimator.SetTrigger(player);
         bodyAnimator = gameObject.transform.Find("Body").gameObject.GetComponent<Animator>();
         bodyAnimator.SetTrigger(player);
+
+        if (player == "setPlayer1")
+        {
+            lookingAt = Side.Left;
+            gameObject.transform.localScale = new Vector3(
+                        -1 * gameObject.transform.localScale.x,
+                        gameObject.transform.localScale.y
+                        );
+        }
 
 		switch (Weapon)
 		{
@@ -83,7 +93,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(jumpKey))
         {
             jumpKeyPressed = true;
-            Debug.Log("Jump");
         }
         if (Input.GetKeyUp(jumpKey))
         {
@@ -120,7 +129,6 @@ public class Player : MonoBehaviour
                 jumpKeyPressed = false;
                 if (controller.collisions.below)
                 {
-                    Debug.Log("Air");
                     velocity.y = maxJumpVelocity;
                     legAnimator.SetTrigger("jump");
                 }
@@ -142,9 +150,9 @@ public class Player : MonoBehaviour
 
 			if (Input2.Horizontal != 0)
 			{
-				Side old = LookingAt;
-				LookingAt = (Side)(int)(Mathf.Abs(Input2.Horizontal) / Input2.Horizontal);
-				if (old != LookingAt)
+				Side old = lookingAt;
+				lookingAt = (Side)(int)(Mathf.Abs(Input2.Horizontal) / Input2.Horizontal);
+				if (old != lookingAt)
 					gameObject.transform.localScale = new Vector3(
 						-1 * gameObject.transform.localScale.x,
 						gameObject.transform.localScale.y
@@ -155,8 +163,11 @@ public class Player : MonoBehaviour
 			{
                 attackKeyPressed = false;
 				if(Weapon.Attack())
-					bodyAnimator.SetTrigger("setAttack");
-			}
+                {
+                    Weapon.PlaySound();
+                    bodyAnimator.SetTrigger("setAttack");
+                }
+            }
 		}
     }
 }

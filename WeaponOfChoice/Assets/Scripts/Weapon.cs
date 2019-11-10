@@ -11,6 +11,8 @@ public abstract class Weapon : MonoBehaviour
 
     protected abstract bool Melee { get; }
 
+    public AudioSource audioSource;
+    public AudioClip[] audioClips;
 
     public virtual float ProjectileAlpha => Melee ? 0 : 1;
 	public GameObject Projectile;
@@ -22,8 +24,9 @@ public abstract class Weapon : MonoBehaviour
 
 	private void Start()
 	{
-		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-	}
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+    }
 	public bool Attack()
 	{
 		if (lastTimeAttacked + reloadTime < Time.timeSinceLevelLoad)
@@ -43,7 +46,7 @@ public abstract class Weapon : MonoBehaviour
 			{
 				projectile =
 				Instantiate(Projectile,
-				GetComponent<Transform>().position + new Vector3(MakeAtLocalPosition.x * (int)Player.LookingAt,
+				GetComponent<Transform>().position + new Vector3(MakeAtLocalPosition.x * (int)Player.lookingAt,
 					MakeAtLocalPosition.y),
 				GetComponent<Transform>().rotation)
 				.GetComponent<ProjectileBehaviour>();
@@ -57,13 +60,19 @@ public abstract class Weapon : MonoBehaviour
 			projectile.dieAtDistance = ProjectileDiesAfter;
 			projectile.GravityScale = ProjectileGravityScale;
 			projectile.Shooter = Player;
-			projectile.AimingAt = Player.LookingAt;
+			projectile.AimingAt = Player.lookingAt;
 			projectile.Speed = projectileSpeed;
 			projectile.damage = attackStrength;
 			return true;
 		}
 		return false;
 	}
+
+    public void PlaySound()
+    {
+        audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+        audioSource.Play();
+    }
 }
 
 
