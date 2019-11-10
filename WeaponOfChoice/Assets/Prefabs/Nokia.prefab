@@ -47,6 +47,13 @@ MonoBehaviour:
   reloadTime: 0.5
   attackStrength: 49
   MakeAtLocalPosition: {x: 0, y: 0, z: 0}
+  audioSource: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 92d0b568eb6f357469f4f8c44f50391f, type: 3}
+  - {fileID: 8300000, guid: ba1b110ee61765645b22ecbe95b0dcb2, type: 3}
+  - {fileID: 8300000, guid: 844f0fca46fba2f459046cb6fa86e90e, type: 3}
+  - {fileID: 8300000, guid: 42ce6921a5a807f4f90f512dbb25fdcd, type: 3}
+  - {fileID: 8300000, guid: d78ab3354aa40b74a82aa8855defa0c8, type: 3}
   Projectile: {fileID: 9076920563576171991, guid: 3013ed771829dc84e95aced6afedba6c,
     type: 3}
   ProjectileDiesAfter: 1.80347

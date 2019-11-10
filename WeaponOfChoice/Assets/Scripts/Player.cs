@@ -83,7 +83,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(jumpKey))
         {
             jumpKeyPressed = true;
-            Debug.Log("Jump");
         }
         if (Input.GetKeyUp(jumpKey))
         {
@@ -120,7 +119,6 @@ public class Player : MonoBehaviour
                 jumpKeyPressed = false;
                 if (controller.collisions.below)
                 {
-                    Debug.Log("Air");
                     velocity.y = maxJumpVelocity;
                     legAnimator.SetTrigger("jump");
                 }
@@ -155,8 +153,11 @@ public class Player : MonoBehaviour
 			{
                 attackKeyPressed = false;
 				if(Weapon.Attack())
-					bodyAnimator.SetTrigger("setAttack");
-			}
+                {
+                    Weapon.PlaySound();
+                    bodyAnimator.SetTrigger("setAttack");
+                }
+            }
 		}
     }
 }
