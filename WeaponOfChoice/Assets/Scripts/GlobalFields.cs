@@ -5,7 +5,6 @@ using UnityEngine;
 public static class GlobalFields
 {
 	#region weapons selection
-	static System.Random random = new System.Random();
     public static WeaponsTypes First { private get; set; } = WeaponsTypes.Nokia;
 	static bool firstTaken = false;
 	static bool somethingTaken = false;
@@ -26,7 +25,7 @@ public static class GlobalFields
 		else
 		{
 			somethingTaken = true;
-			if (random.Next(2) == 0)
+			if (Random.Range(0,2) == 0)
 			{
 				firstTaken = true;
 				return First;
@@ -51,7 +50,7 @@ public static class GlobalFields
 		else
 		{
 			somethingTaken = true;
-			if (random.Next(2) == 0)
+			if (Random.Range(0,2) == 0)
 			{
 				firstTaken = true;
 				First = wt;
@@ -65,7 +64,7 @@ public static class GlobalFields
 	public static int FirstPoints = 0;
 	public static int SecondPoints = 0;
 
-	public static	 void ILost(Transform me)
+	public static void ILost(Transform me)
 	{
 		if (me.gameObject.layer == 9) //9 znamena Player0
 			SecondPoints++;

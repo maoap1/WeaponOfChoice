@@ -4,8 +4,10 @@ using UnityEngine;
 
 public sealed class Nokia : Weapon
 {
+
     protected override bool Melee => true;
-    void Start()
+
+    public Nokia()
     {
         attackStrength = 49;
         ProjectileDiesAfter = 1.80347f;
