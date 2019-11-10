@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 			case Tentacle t:
 				bodyAnimator.SetTrigger("setTentacle");
 				break;
-			case PenguinLouncher p:
+			case PenguinLauncher p:
 				bodyAnimator.SetTrigger("setPenguin");
 				break;
             default:
