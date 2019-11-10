@@ -7,5 +7,7 @@ public enum WeaponsTypes
    Nokia,
    Toaster,
    Tentacle,
-   PenguinLouncher
+   PenguinLauncher,
+   Fork,
+   Palcat
 }
