@@ -50,9 +50,7 @@ MonoBehaviour:
   MakeAtLocalPosition: {x: 1.771221, y: 1.526695, z: 0}
   audioSource: {fileID: 0}
   audioClips:
-  - {fileID: 8300000, guid: c94b0a8cb66f25d428e195411f000b1e, type: 3}
-  - {fileID: 8300000, guid: e5315ee0f0a7e164990e0325e5817ecb, type: 3}
-  - {fileID: 8300000, guid: c6121ac93cd12404ab9e797019a76f28, type: 3}
+  - {fileID: 8300000, guid: ac64a143efe94d64092b3affb91a4bda, type: 3}
   Projectile: {fileID: 789392964638362955, guid: 03a477879a4613842948669935350531,
     type: 3}
   ProjectileDiesAfter: 500000

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameOverScript : MonoBehaviour
 {
+
+	public GameObject greenWon;
+	public GameObject redWon;
     // Start is called before the first frame update
     void Start()
     {
