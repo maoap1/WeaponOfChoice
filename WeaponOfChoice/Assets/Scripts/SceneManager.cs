@@ -24,18 +24,21 @@ public class SceneManager : MonoBehaviour
 
 	public void LoadScene(string sceneName)
 	{
-		if (!endFading)
+		if (!end)
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-		}
-		else
-		{
-			GameObject pic = Instantiate(fadingPic);
-			SpriteRenderer i = pic.GetComponent<SpriteRenderer>();
-			fader = i.FadeIn(fadingTime);
-			end = true;
-			newSceneName = sceneName;
-			endTime = Time.timeSinceLevelLoad;
+			if (!endFading)
+			{
+				UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+			}
+			else
+			{
+				GameObject pic = Instantiate(fadingPic);
+				SpriteRenderer i = pic.GetComponent<SpriteRenderer>();
+				fader = i.FadeIn(fadingTime);
+				end = true;
+				newSceneName = sceneName;
+				endTime = Time.timeSinceLevelLoad;
+			}
 		}
 	}
 

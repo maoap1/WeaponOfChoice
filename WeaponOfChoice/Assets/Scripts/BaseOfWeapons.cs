@@ -37,7 +37,7 @@ public class BaseOfWeapons : MonoBehaviour
 			case Toaster t:
 				return WeaponsTypes.Toaster;
 			default:
-				throw new NotImplementedException();
+				throw new NotImplementedException("Uknown weapon type: " + weapon.ToString());
 		}
 	}
 }

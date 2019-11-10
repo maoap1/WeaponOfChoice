@@ -36,6 +36,7 @@ public static class GlobalFields
 	}
 	public static void SetWeapon(WeaponsTypes wt)
 	{
+		Debug.Log(wt.ToString());
 		if (somethingTaken)
 		{
 			somethingTaken = false;
