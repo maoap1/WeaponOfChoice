@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2554748720794052923
+--- !u!1 &6869767953653352035
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,62 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2554748720794052900}
-  - component: {fileID: 2554748720794052922}
-  - component: {fileID: -6694083881730664494}
-  - component: {fileID: -2518999764159519496}
+  - component: {fileID: 8366104160799797927}
+  - component: {fileID: 5716296377423193875}
+  - component: {fileID: 8750074619914350977}
+  - component: {fileID: 8974951102860413635}
   m_Layer: 0
-  m_Name: Toaster
+  m_Name: penguin_launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2554748720794052900
+--- !u!4 &8366104160799797927
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554748720794052923}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7372774, w: 0.67559016}
+  m_GameObject: {fileID: 6869767953653352035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 95}
---- !u!114 &2554748720794052922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554748720794052923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363d7b869c5374c428c25f999f0b4cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reloadTime: 0.45
-  attackStrength: 10
-  MakeAtLocalPosition: {x: 1.7, y: 1.526695, z: 0}
-  audioSource: {fileID: 0}
-  audioClips:
-  - {fileID: 8300000, guid: ac64a143efe94d64092b3affb91a4bda, type: 3}
-  Projectile: {fileID: 789392964638362955, guid: 03a477879a4613842948669935350531,
-    type: 3}
-  ProjectileDiesAfter: 500000
-  projectileSpeed: 17
-  ProjectileStartingAngle: {x: 5, y: 1, z: 0}
-  ProjectileGravityScale: 1
---- !u!212 &-6694083881730664494
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5716296377423193875
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554748720794052923}
+  m_GameObject: {fileID: 6869767953653352035}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -96,29 +72,29 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d261074ad95ffe043bed7a997403b76c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7949e7c6769db5a4a8598bae26fdfbe9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.32, y: 1.64}
+  m_Size: {x: 4.13, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &-2518999764159519496
+--- !u!82 &8750074619914350977
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554748720794052923}
+  m_GameObject: {fileID: 6869767953653352035}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -203,3 +179,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8974951102860413635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869767953653352035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4ca7819783df4a86f3c9a079d5f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadTime: 0.8
+  attackStrength: 10
+  MakeAtLocalPosition: {x: 0, y: 0, z: 0}
+  audioSource: {fileID: 0}
+  audioClips: []
+  Projectile: {fileID: 2124903942494534445, guid: 4252bb1750b657f49874936c48b08661,
+    type: 3}
+  ProjectileDiesAfter: 500000
+  projectileSpeed: 20
+  ProjectileStartingAngle: {x: 1, y: 0, z: 0}
+  ProjectileGravityScale: 0.6

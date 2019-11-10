@@ -6,5 +6,6 @@ public enum WeaponsTypes
 {
    Nokia,
    Toaster,
-   Tentacle
+   Tentacle,
+   PenguinLouncher
 }

@@ -7,7 +7,7 @@ public class BaseOfWeapons : MonoBehaviour
 {
 	public List<GameObject> WeaponsPrefabs;
 
-	public GameObject GetWeaponThat(Predicate<Weapon> condition)
+	private GameObject GetWeaponThat(Predicate<Weapon> condition)
 	{
 		foreach (GameObject prefab in WeaponsPrefabs)
 		{
@@ -27,6 +27,8 @@ public class BaseOfWeapons : MonoBehaviour
 				return GetWeaponThat(w => w is Tentacle);
 			case WeaponsTypes.Toaster:
 				return GetWeaponThat(w => w is Toaster);
+			case WeaponsTypes.PenguinLouncher:
+				return GetWeaponThat(w => w is PenguinLouncher);
 			default:
 				throw new NotImplementedException();
 		}
@@ -41,6 +43,8 @@ public class BaseOfWeapons : MonoBehaviour
 				return WeaponsTypes.Toaster;
 			case Tentacle t:
 				return WeaponsTypes.Tentacle;
+			case PenguinLouncher p:
+				return WeaponsTypes.PenguinLouncher;
 			default:
 				throw new NotImplementedException("Uknown weapon type: " + weapon.ToString());
 		}
