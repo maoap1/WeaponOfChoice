@@ -5,14 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(InputManager))]
 public class WeaponsSelector : MonoBehaviour
 {
-	public GameObject[] keysPictures = new GameObject[3];
-	GameObject[] weapons = new GameObject[3];
+	public GameObject[] keysPictures = new GameObject[maximalNumberOfWeapons];
+	GameObject[] weapons = new GameObject[maximalNumberOfWeapons];
 	GameObject UpKey { get => keysPictures[0]; set => keysPictures[0] = value; }
 	GameObject RightKey { get => keysPictures[1]; set => keysPictures[1] = value; }
 	GameObject LeftKey { get => keysPictures[2]; set => keysPictures[2] = value; }
 	public GameObject Base;
 	public float WaitingTime;
-	private float weaponsSelectedTime = 0;
 	public float weaponChoosingTime = 1;
 
 	public GameObject sceneFader;

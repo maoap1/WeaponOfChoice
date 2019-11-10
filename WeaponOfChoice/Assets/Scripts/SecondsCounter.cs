@@ -13,9 +13,9 @@ public class SecondsCounter : MonoBehaviour
     {
 		if (instantiated != null)
 			Destroy(instantiated);
-        if(Time.timeSinceLevelLoad + 1 < counterMarks.Count)
+        if(Time.timeSinceLevelLoad  < counterMarks.Count)
 		{
-			instantiated = Instantiate(counterMarks[(int)Time.timeSinceLevelLoad]);
+			instantiated = Instantiate(counterMarks[Mathf.Max(0,(int)Time.timeSinceLevelLoad)], transform);
 		}
     }
 }
