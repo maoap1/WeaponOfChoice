@@ -91,6 +91,12 @@ public class Player : MonoBehaviour
 			case PenguinLauncher p:
 				bodyAnimator.SetTrigger("setPenguin");
 				break;
+            case Fork f:
+                bodyAnimator.SetTrigger("setFork");
+                break;
+            case Palcat p:
+                bodyAnimator.SetTrigger("setPalcat");
+                break;
             default:
 				throw new NotImplementedException();
 		}

@@ -27,8 +27,12 @@ public class BaseOfWeapons : MonoBehaviour
 				return GetWeaponThat(w => w is Tentacle);
 			case WeaponsTypes.Toaster:
 				return GetWeaponThat(w => w is Toaster);
-			case WeaponsTypes.PenguinLouncher:
+			case WeaponsTypes.PenguinLauncher:
 				return GetWeaponThat(w => w is PenguinLauncher);
+            case WeaponsTypes.Fork:
+                return GetWeaponThat(w => w is Fork);
+            case WeaponsTypes.Palcat:
+                return GetWeaponThat(w => w is Palcat);
 			default:
 				throw new NotImplementedException();
 		}
@@ -44,7 +48,11 @@ public class BaseOfWeapons : MonoBehaviour
 			case Tentacle t:
 				return WeaponsTypes.Tentacle;
 			case PenguinLauncher p:
-				return WeaponsTypes.PenguinLouncher;
+				return WeaponsTypes.PenguinLauncher;
+            case Fork f:
+                return WeaponsTypes.Fork;
+            case Palcat p:
+                return WeaponsTypes.Palcat;
 			default:
 				throw new NotImplementedException("Uknown weapon type: " + weapon.ToString());
 		}
