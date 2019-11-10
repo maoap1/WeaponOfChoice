@@ -9,7 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
 	public Side AimingAt;
 	public Player Shooter;
 	public int Speed { get; set; }
-	public int damage { get; set; }
+    public int damage;
 	public float dieAtDistance { get; set; }
 	Vector3 _startingAngle;
 	public Vector3 StartingAngle
@@ -52,7 +52,9 @@ public class ProjectileBehaviour : MonoBehaviour
 			{
 				if (!ReferenceEquals(Shooter, other.GetComponent<Player>()))
 				{
-					other.GetComponent<Player>().CurrHealth -= damage;
+                    Player player = other.GetComponent<Player>();
+                    player.CurrHealth -= damage;
+                    player.PlayDamagedSound();
 					Destroy(gameObject);
 					dead = true;
 				}
