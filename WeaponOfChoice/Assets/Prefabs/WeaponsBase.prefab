@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3714033381389822301}
   - component: {fileID: 3714033381389822300}
   m_Layer: 0
-  m_Name: WeponsBase
+  m_Name: WeaponsBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +47,4 @@ MonoBehaviour:
   - {fileID: 6484894146291355297, guid: 776f055f103136d4c9ff187303fe00c5, type: 3}
   - {fileID: 2554748720794052923, guid: 2bee74ac7cbe38d41b4be09e53effce1, type: 3}
   - {fileID: 6992312781852784742, guid: 67269ee136557294584e2ff7bad654cc, type: 3}
+  - {fileID: 6869767953653352035, guid: f0e6293275ffe414fb6009ea779b9b8e, type: 3}

@@ -719,7 +719,7 @@ PrefabInstance:
     - target: {fileID: 3714033381389822303, guid: 3a7981a8935e8ee44ba7d48f775823e5,
         type: 3}
       propertyPath: m_Name
-      value: WeponsBase
+      value: WeaponsBase
       objectReference: {fileID: 0}
     - target: {fileID: 3714033381389822301, guid: 3a7981a8935e8ee44ba7d48f775823e5,
         type: 3}
