@@ -55,7 +55,7 @@ MonoBehaviour:
     type: 3}
   ProjectileDiesAfter: 500000
   projectileSpeed: 17
-  ProjectileStartingAngle: {x: 9, y: 1, z: 0}
+  ProjectileStartingAngle: {x: 3, y: 5, z: 0}
   ProjectileGravityScale: 1
 --- !u!212 &-6694083881730664494
 SpriteRenderer:
