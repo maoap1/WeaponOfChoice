@@ -95,17 +95,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78e06cf37118074b8e7ed131e377e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0.8
+  reloadTime: 0.25
   attackStrength: 10
-  MakeAtLocalPosition: {x: 0, y: 0, z: 0}
+  MakeAtLocalPosition: {x: 0, y: 0.91, z: 0}
   audioSource: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: cde1f897a9ad9d2429088c893db30a95, type: 3}
-  Projectile: {fileID: 0}
-  ProjectileDiesAfter: 500000
+  Projectile: {fileID: 9076920563576171991, guid: 3013ed771829dc84e95aced6afedba6c,
+    type: 3}
+  ProjectileDiesAfter: 1.8
   projectileSpeed: 5
   ProjectileStartingAngle: {x: 1, y: 0, z: 0}
-  ProjectileGravityScale: 0.15
+  ProjectileGravityScale: 0.1
 --- !u!82 &1583247634248371176
 AudioSource:
   m_ObjectHideFlags: 0
