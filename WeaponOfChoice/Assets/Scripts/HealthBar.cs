@@ -6,6 +6,9 @@ public class HealthBar : MonoBehaviour
 {
 	public Player Player;
 	public bool stayOnRight;
+	public GameObject frame;
+	public GameObject background;
+	public GameObject fill;
 	bool StayOnRight {
 		get => stayOnRight;
 		set {
