@@ -2,11 +2,11 @@
 using System;
 using System.Collections;
 
-[RequireComponent(typeof(Controller2D),typeof(InputManager))]
+[RequireComponent(typeof(Controller2D),typeof(InputManager),typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip[] audioClips;
+    public AudioClip jumpAudioClip, damagedAudioClip;
 
     private int _currHealth = MAX_HEALTH;
 	public int CurrHealth {
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
 		}
 
         audioSource = gameObject.GetComponent<AudioSource>();
-
+        audioSource.clip = jumpAudioClip;
     }
 
     // Input musi byt v Update(), aby to dobre fungovalo. Kdyby byl ve FixedUpdate(), tak se nemusi zavolat, i kdyz se ta klavesa zmackne
@@ -140,6 +140,8 @@ public class Player : MonoBehaviour
                 {
                     velocity.y = maxJumpVelocity;
                     legAnimator.SetTrigger("jump");
+                    audioSource.clip = jumpAudioClip;
+                    audioSource.Play();
                 }
             }
 
@@ -178,5 +180,11 @@ public class Player : MonoBehaviour
                 }
             }
 		}
+    }
+
+    public void PlayDamagedSound()
+    {
+        audioSource.clip = damagedAudioClip;
+        audioSource.Play();
     }
 }
