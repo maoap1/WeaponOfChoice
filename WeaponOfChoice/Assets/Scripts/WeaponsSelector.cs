@@ -80,6 +80,6 @@ public class WeaponsSelector : MonoBehaviour
 		newObj.transform.localPosition = keysPictures[positionerIndex].transform.localPosition * 2;
 		keysPictures[positionerIndex] = newObj;
 		newObj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-		newObj.transform.localScale = new Vector3(1, 1, 1);
+		newObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 	}
 }
