@@ -692,6 +692,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3714033381389822300, guid: 3a7981a8935e8ee44ba7d48f775823e5,
+        type: 3}
+      propertyPath: WeaponsPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6484894146291355297, guid: 776f055f103136d4c9ff187303fe00c5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a7981a8935e8ee44ba7d48f775823e5, type: 3}
 --- !u!1 &729797891 stripped
@@ -974,7 +980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c0ec893a700134d9ba892407323a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpKey: 273
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -1037,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Horizontal1
   jumpName: 273
-  fireButtonName: Fire1
+  attackName: 0
 --- !u!4 &1109905379
 Transform:
   m_ObjectHideFlags: 0
@@ -1304,7 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c0ec893a700134d9ba892407323a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpKey: 119
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -1367,7 +1371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Horizontal0
   jumpName: 119
-  fireButtonName: Fire0
+  attackName: 0
 --- !u!1 &2034723769
 GameObject:
   m_ObjectHideFlags: 0
