@@ -213,9 +213,10 @@ MonoBehaviour:
   - {fileID: 3614986621716125603, guid: 7f318cdb74970374a982842b9b9ece85, type: 3}
   - {fileID: 2516160801515059041, guid: 30b954a114aeceb4080d3749223aa781, type: 3}
   - {fileID: 883770286797959138, guid: ce5d82d5ca497ad4d873c0eb88042d31, type: 3}
-  weaponsBase: {fileID: 611506502}
+  Base: {fileID: 611506502}
   WaitingTime: 3
   weaponChoosingTime: 1
+  sceneFader: {fileID: 357572556}
 --- !u!114 &483308336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,9 +438,10 @@ MonoBehaviour:
   - {fileID: 3154289005512546322, guid: f4084e26b8d9d164e9d13b69dccffd50, type: 3}
   - {fileID: 5431156491045493394, guid: 0717f15672b44e54db0aa12e1bd67629, type: 3}
   - {fileID: 8329554624257162367, guid: 533a9808d804eb14ab35f03ea30fe593, type: 3}
-  weaponsBase: {fileID: 611506502}
+  Base: {fileID: 611506502}
   WaitingTime: 3
   weaponChoosingTime: 1
+  sceneFader: {fileID: 357572556}
 --- !u!114 &1587756509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76e06c8b0c25ca4d870cbbcafbd770d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxisName: Horizontal0
+  horizontalAxisName: Horizontal1
   jumpName: 273
   attackName: 0
 --- !u!1 &1647550660
