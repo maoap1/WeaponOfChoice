@@ -5,5 +5,4 @@ using UnityEngine;
 public sealed class Fork : Weapon
 {
     protected override bool Melee => true;
-
 }

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 	public KeyCode attackKey => GetComponent<InputManager>().attackName;
 
     public bool Dead { get; private set; } = false;
-	public static readonly int MAX_HEALTH = 100;
+	public static readonly int MAX_HEALTH = 10000;
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
