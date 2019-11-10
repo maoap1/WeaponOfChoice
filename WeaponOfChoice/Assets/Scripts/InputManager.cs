@@ -8,6 +8,11 @@ public class InputManager : MonoBehaviour
 	public KeyCode jumpName;
     public KeyCode attackName;
 
+	public bool EndJumping => Input.GetKeyUp(jumpName);
+	public bool StartJumping => Input.GetKeyDown(jumpName);
+	public float Horizontal => Input.GetAxis(horizontalAxisName);
+	public bool Fired { get; }
+
 	// Update is called once per frame
 	void Update()
 	{
