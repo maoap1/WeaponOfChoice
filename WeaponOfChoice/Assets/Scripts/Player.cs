@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 		set => Dead = ((_currHealth = value) <= 0);
 	}
 	bool alreadyDead = false;
-    public KeyCode jumpKey;
+	public KeyCode jumpKey => GetComponent<InputManager>().jumpName;
 
 	public bool Dead { get; private set; } = false;
 	public static readonly int MAX_HEALTH = 100;
@@ -130,6 +130,8 @@ public class Player : MonoBehaviour
 			}
 
 			float targetVelocityX = input.x * moveSpeed;
+			if (targetVelocityX != 0)
+				legAnimator.SetTrigger("setWalking");
 			velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
 			velocity.y += gravity * Time.deltaTime;
 			controller.Move(velocity * Time.deltaTime);

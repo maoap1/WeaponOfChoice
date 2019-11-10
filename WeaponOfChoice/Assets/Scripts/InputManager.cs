@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
 	public string fireButtonName;
 
 	// Update is called once per frame
-	void FixedUpdate()
+	void Update()
 	{
         CurrInput = new InputResults(
             horizontal: Input.GetAxis(horizontalAxisName),
