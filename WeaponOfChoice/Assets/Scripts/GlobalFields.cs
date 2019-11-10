@@ -6,7 +6,7 @@ public static class GlobalFields
 {
 	#region weapons selection
 	static System.Random random = new System.Random();
-	public static WeaponsTypes First { private get; set; } = WeaponsTypes.Toaster;//TODO
+    public static WeaponsTypes First { private get; set; } = WeaponsTypes.Nokia;
 	static bool firstTaken = false;
 	static bool somethingTaken = false;
 	public static WeaponsTypes Second { private get; set; } = WeaponsTypes.Toaster;

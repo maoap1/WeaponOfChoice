@@ -6,7 +6,7 @@ public class InputManager : MonoBehaviour
 {
 	public string horizontalAxisName;
 	public KeyCode jumpName;
-	public string fireButtonName;
+    public KeyCode attackName;
 
 	public bool EndJumping => Input.GetKeyUp(jumpName);
 	public bool StartJumping => Input.GetKeyDown(jumpName);
@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
             horizontal: Input.GetAxis(horizontalAxisName),
             startJump: Input.GetKeyDown(jumpName),
             endJump: Input.GetKeyUp(jumpName),
-            fired: Input.GetButtonDown(fireButtonName)
+            fired: Input.GetKeyDown(attackName)
             ); ;
 	}
 	public InputResults CurrInput { get; private set; }
