@@ -30,7 +30,9 @@ public class HealthBar : MonoBehaviour
 	void Update()
 	{
 		float curr = GetComponent<SpriteRenderer>().bounds.size.x;
-		transform.localScale = new Vector3(initSize * Player.CurrHealth / Player.MAX_HEALTH, transform.localScale.y);
+		transform.localScale = new Vector3(
+			Mathf.Max(initSize * Player.CurrHealth / Player.MAX_HEALTH, 0),
+			transform.localScale.y);
 		transform.position += new Vector3( sign *(curr - GetComponent<SpriteRenderer>().bounds.size.x) / 2, 0);
 	}
 }

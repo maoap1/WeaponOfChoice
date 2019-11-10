@@ -85,9 +85,9 @@ public class Player : MonoBehaviour
 			case Toaster t:
 				bodyAnimator.SetTrigger("setToaster");
 				break;
-            // TODO 
-			// bodyAnimator.SetTrigger("setTentacle");
-            
+			case Tentacle t:
+				bodyAnimator.SetTrigger("setTentacle");
+				break;
             default:
 				throw new NotImplementedException();
 		}

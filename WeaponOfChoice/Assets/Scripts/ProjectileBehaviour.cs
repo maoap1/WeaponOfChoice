@@ -47,7 +47,7 @@ public class ProjectileBehaviour : MonoBehaviour
 	{
 		if (!dead)
 		{
-			//Debug.Log((Shooter.transform.position - transform.position).magnitude);
+			Debug.Log((Shooter.transform.position - transform.position).magnitude);
 			if (other.gameObject.layer == 10 || other.gameObject.layer == 9)
 			{
 				if (!ReferenceEquals(Shooter, other.GetComponent<Player>()))
