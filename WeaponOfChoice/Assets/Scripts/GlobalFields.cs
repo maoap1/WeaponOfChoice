@@ -6,7 +6,7 @@ using UnityEngine;
 public static class GlobalFields
 {
 
-	public static float WeaponChooseCounterTime = 2f;
+	public static float WeaponChooseCounterTime = 3f;
 
 	#region weapons selection
     public static WeaponsTypes WeaponPlayer0 { private get; set; } = WeaponsTypes.Fork;

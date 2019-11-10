@@ -16,7 +16,7 @@ public class SecondsCounter : MonoBehaviour
         if(Time.timeSinceLevelLoad  < GlobalFields.WeaponChooseCounterTime)
 		{
 			instantiated = Instantiate(counterMarks[Mathf.Max(0,
-				(int)((Time.timeSinceLevelLoad +1)/ (GlobalFields.WeaponChooseCounterTime /counterMarks.Count)))], transform);
+				(int)((Time.timeSinceLevelLoad +1)/ (GlobalFields.WeaponChooseCounterTime /counterMarks.Count) - 1)) ], transform);
 		}
     }
 }
