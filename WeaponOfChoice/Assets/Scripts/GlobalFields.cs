@@ -39,6 +39,8 @@ public static class GlobalFields
 	public static int FirstPoints = 0;
 	public static int SecondPoints = 0;
 
+    public static bool player0Wins = false;
+
 	public static void ILost(Transform me)
 	{
 		if (me.gameObject.layer == 9) //9 znamena Player0

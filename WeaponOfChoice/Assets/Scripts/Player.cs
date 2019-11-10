@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
 	public GameObject SceneManager;
+
+    public bool isPlayer0 = false;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
     float moveSpeed = 6;
@@ -58,6 +60,10 @@ public class Player : MonoBehaviour
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
 		string player = gameObject.layer == 9 ? "setPlayer0" : "setPlayer1"; // 9 is Player0 layer
+        if (gameObject.layer == 9)
+        {
+            isPlayer0 = true;
+        }
         legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
         legAnimator.SetTrigger(player);
         bodyAnimator = gameObject.transform.Find("Body").gameObject.GetComponent<Animator>();
@@ -129,9 +135,10 @@ public class Player : MonoBehaviour
 		{
 			if(!alreadyDead)
 			{
+                GlobalFields.player0Wins = !isPlayer0;
 				alreadyDead = true;
 				GlobalFields.ILost(transform);
-				SceneManager.GetComponent<SceneManager>().LoadScene("WeaponChoosing");
+				SceneManager.GetComponent<SceneManager>().LoadScene("GameOver");
 			}
 		}
 		else
