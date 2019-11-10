@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
 	}
 	bool alreadyDead = false;
 	public KeyCode jumpKey => GetComponent<InputManager>().jumpName;
+	public KeyCode attackKey => GetComponent<InputManager>().attackName;
 
-	public bool Dead { get; private set; } = false;
+    public bool Dead { get; private set; } = false;
 	public static readonly int MAX_HEALTH = 100;
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
 
     private bool jumpKeyPressed = false;
     private bool jumpKeyReleased = false;
+    private bool attackKeyPressed = false;
 
     void Start()
     {
@@ -86,6 +88,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(jumpKey))
         {
             jumpKeyReleased = true;
+        }
+        if (Input.GetKeyDown(attackKey))
+        {
+            attackKeyPressed = true;
         }
     }
 
@@ -147,8 +153,9 @@ public class Player : MonoBehaviour
 						);
 			}
 
-			if (Input2.Fired)
+			if (attackKeyPressed)
 			{
+                attackKeyPressed = false;
 				if(Weapon.Attack())
 					bodyAnimator.SetTrigger("setAttack");
 			}
