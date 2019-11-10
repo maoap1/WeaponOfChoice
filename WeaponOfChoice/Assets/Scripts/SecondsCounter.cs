@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class SecondsCounter : MonoBehaviour
 {
-	List<GameObject> counterMarks;
+	public List<GameObject> counterMarks;
 
 	GameObject instantiated;
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
