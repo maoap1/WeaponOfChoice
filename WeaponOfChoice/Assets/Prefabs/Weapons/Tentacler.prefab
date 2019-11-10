@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6992312781852784740}
   - component: {fileID: 6992312781852784741}
   m_Layer: 0
-  m_Name: 10_tackle
+  m_Name: Tentacler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c6121ac93cd12404ab9e797019a76f28, type: 3}
   Projectile: {fileID: 9076920563576171991, guid: 3013ed771829dc84e95aced6afedba6c,
     type: 3}
-  ProjectileDiesAfter: 500000
-  projectileSpeed: 5
+  ProjectileDiesAfter: 3.1
+  projectileSpeed: 10
   ProjectileStartingAngle: {x: 1, y: 0, z: 0}
   ProjectileGravityScale: 0
