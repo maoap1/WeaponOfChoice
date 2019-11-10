@@ -32,7 +32,7 @@ public class WeaponsSelector : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
 		if (Time.timeSinceLevelLoad > startTime + WaitingTime && !used)
 		{
@@ -76,8 +76,7 @@ public class WeaponsSelector : MonoBehaviour
 	private void InstantiateWithPosOf(GameObject toInstantiate, Transform parent, int positionerIndex)
 	{
 		GameObject newObj = Instantiate(toInstantiate, parent.transform);
-		newObj.transform.position = keysPictures[positionerIndex].transform.position;
-		Destroy(keysPictures[positionerIndex]);
+		newObj.transform.localPosition = keysPictures[positionerIndex].transform.localPosition * 2;
 		keysPictures[positionerIndex] = newObj;
 	}
 }
