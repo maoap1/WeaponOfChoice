@@ -13,9 +13,10 @@ public class WeaponsSelector : MonoBehaviour
 	public float WaitingTime;
 	public float weaponChoosingTime = 1;
 
+    const int maximalNumberOfWeapons = 3;
+
 	BaseOfWeapons weapons => weaponsBase.GetComponent<BaseOfWeapons>();
 
-	System.Random random = new System.Random();
 	float startTime;
 	float usedTime;
 	bool used = false;
@@ -32,18 +33,18 @@ public class WeaponsSelector : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
 		if (Time.timeSinceLevelLoad > startTime + WaitingTime && !used)
 		{
 			used = true;
 			usedTime = Time.timeSinceLevelLoad;
-			int count = Mathf.Min(3, weapons.WeaponsPrefabs.Count);
+			int count = Mathf.Min(maximalNumberOfWeapons, weapons.WeaponsPrefabs.Count);
 			List<int> usedIndexes = new List<int>();
 			int currIndex;
 			for (int i = 0; i < count; i++)
 			{
-				while (usedIndexes.Contains(currIndex = random.Next() % weapons.WeaponsPrefabs.Count))
+				while (usedIndexes.Contains(currIndex = Random.Range(0, weapons.WeaponsPrefabs.Count)))
 				{ }
 				usedIndexes.Add(currIndex);
 			}
@@ -70,14 +71,15 @@ public class WeaponsSelector : MonoBehaviour
 		else if (usedSecondTime && usedTime + weaponChoosingTime < Time.timeSinceLevelLoad)
 		{
 			GlobalFields.SetWeapon(weapons.GetWeaponTypeOf(
-					keysPictures[random.Next(3)].GetComponent<Weapon>()));
+					keysPictures[Random.Range(0, maximalNumberOfWeapons)].GetComponent<Weapon>()));
 		}
 	}
-	private void InstantiateWithPosOf(GameObject toInstantiate, Transform parent, int positionerIndex)
+	private void InstantiateWithPosOf(GameObject weaponToInstantiate, Transform parent, int positionerIndex)
 	{
-		GameObject newObj = Instantiate(toInstantiate, parent.transform);
-		newObj.transform.position = keysPictures[positionerIndex].transform.position;
-		Destroy(keysPictures[positionerIndex]);
+		GameObject newObj = Instantiate(weaponToInstantiate, parent.transform);
+		newObj.transform.localPosition = keysPictures[positionerIndex].transform.localPosition * 2;
 		keysPictures[positionerIndex] = newObj;
+		newObj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+		newObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 	}
 }
