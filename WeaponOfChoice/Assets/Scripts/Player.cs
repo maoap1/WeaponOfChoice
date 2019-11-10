@@ -88,6 +88,8 @@ public class Player : MonoBehaviour
 			case Tentacle t:
 				bodyAnimator.SetTrigger("setTentacle");
 				break;
+            // TODO
+            // body.Animator.SetTrigger("setPenguin");
             default:
 				throw new NotImplementedException();
 		}
