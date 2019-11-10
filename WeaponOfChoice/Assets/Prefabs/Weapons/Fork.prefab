@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78e06cf37118074b8e7ed131e377e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0.5
+  reloadTime: 0.25
   attackStrength: 10
   MakeAtLocalPosition: {x: 0, y: 0.91, z: 0}
   audioSource: {fileID: 0}
