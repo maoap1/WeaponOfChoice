@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6484894146291355298}
   - component: {fileID: 5349611395532320548}
   m_Layer: 0
-  m_Name: fork_alpha
+  m_Name: Nokia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd68815f1b7d1674f8cbe958f091d761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadTime: 0.5
+  attackStrength: 49
+  MakeAtLocalPosition: {x: 0, y: 0, z: 0}
   Projectile: {fileID: 9076920563576171991, guid: 3013ed771829dc84e95aced6afedba6c,
     type: 3}
+  ProjectileDiesAfter: 1.80347
+  projectileSpeed: 7
+  ProjectileStartingAngle: {x: 1, y: 0, z: 0}
+  ProjectileGravityScale: -0.14
