@@ -5,7 +5,10 @@ using System.Collections;
 [RequireComponent(typeof(Controller2D),typeof(InputManager))]
 public class Player : MonoBehaviour
 {
-	private int _currHealth = MAX_HEALTH;
+    public AudioSource audioSource;
+    public AudioClip[] audioClips;
+
+    private int _currHealth = MAX_HEALTH;
 	public int CurrHealth {
 		get => _currHealth;
 		set => Dead = ((_currHealth = value) <= 0);
@@ -82,9 +85,15 @@ public class Player : MonoBehaviour
 			case Toaster t:
 				bodyAnimator.SetTrigger("setToaster");
 				break;
-			default:
+            // TODO 
+			// bodyAnimator.SetTrigger("setTentacle");
+            
+            default:
 				throw new NotImplementedException();
 		}
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+
     }
 
     // Input musi byt v Update(), aby to dobre fungovalo. Kdyby byl ve FixedUpdate(), tak se nemusi zavolat, i kdyz se ta klavesa zmackne

@@ -9,7 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
 	public Side AimingAt;
 	public Player Shooter;
 	public int Speed { get; set; }
-	public int damage { get; set; }
+    public int damage;
 	public float dieAtDistance { get; set; }
 	Vector3 _startingAngle;
 	public Vector3 StartingAngle
