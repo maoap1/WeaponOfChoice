@@ -26,16 +26,16 @@ public class HealthBar : MonoBehaviour
 	void Start()
 	{
 		StayOnRight = stayOnRight;
-		initSize = transform.localScale.x;
+		initSize = fill.transform.localScale.x;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		float curr = GetComponent<SpriteRenderer>().bounds.size.x;
-		transform.localScale = new Vector3(
-			Mathf.Max(initSize * Player.CurrHealth / Player.MAX_HEALTH, 0),
-			transform.localScale.y);
-		transform.position += new Vector3( sign *(curr - GetComponent<SpriteRenderer>().bounds.size.x) / 2, 0);
+		float curr = background.GetComponent<SpriteRenderer>().bounds.size.x;
+		background.transform.localScale = new Vector3(
+			Mathf.Max(initSize * (1 - Player.CurrHealth / Player.MAX_HEALTH), 0),
+			background.transform.localScale.y);
+		background.transform.position -= new Vector3( sign *(curr - GetComponent<SpriteRenderer>().bounds.size.x) / 2, 0);
 	}
 }
