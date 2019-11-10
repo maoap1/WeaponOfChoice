@@ -8,9 +8,15 @@ public class ProjectileBehaviour : MonoBehaviour
 
 	public Side AimingAt;
 	public Player Shooter;
-	public int Speed { get; set; } = 5;
-	public int damage { get; set; } = 25;
-	public float dieAtDistance;
+	public int Speed { get; set; }
+	public int damage { get; set; }
+	public float dieAtDistance { get; set; }
+	Vector3 _startingAngle;
+	public Vector3 StartingAngle
+	{
+		private get => _startingAngle;
+		set => _startingAngle = value.normalized;
+	}
 
 	public float GravityScale
 	{
@@ -26,7 +32,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Vector3 movement = new Vector3((int)AimingAt, 0, 0);
+		Vector3 movement = new Vector3((int)AimingAt * StartingAngle.x, StartingAngle.y, 0);
 
 		transform.position += movement * Speed * Time.fixedDeltaTime;
 
