@@ -25,7 +25,9 @@ public abstract class Weapon : MonoBehaviour
 	private void Start()
 	{
 		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-	}
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+    }
 	public bool Attack()
 	{
 		if (lastTimeAttacked + reloadTime < Time.timeSinceLevelLoad)
@@ -66,12 +68,6 @@ public abstract class Weapon : MonoBehaviour
 		}
 		return false;
 	}
-
-    void Start()
-    {
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
-    }
 
     public void PlaySound()
     {
