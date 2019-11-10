@@ -6,7 +6,7 @@ public sealed class Toaster : Weapon
 {
 	protected override bool Melee => false;
 	
-    public Toaster()
+    public void Start()
     {
         ProjectileStartingAngle = new Vector3(5, 1, 0);
         projectileSpeed = 17;

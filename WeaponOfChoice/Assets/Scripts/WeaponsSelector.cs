@@ -73,10 +73,11 @@ public class WeaponsSelector : MonoBehaviour
 					keysPictures[random.Next(3)].GetComponent<Weapon>()));
 		}
 	}
-	private void InstantiateWithPosOf(GameObject toInstantiate, Transform parent, int positionerIndex)
+	private void InstantiateWithPosOf(GameObject weaponToInstantiate, Transform parent, int positionerIndex)
 	{
-		GameObject newObj = Instantiate(toInstantiate, parent.transform);
+		GameObject newObj = Instantiate(weaponToInstantiate, parent.transform);
 		newObj.transform.localPosition = keysPictures[positionerIndex].transform.localPosition * 2;
 		keysPictures[positionerIndex] = newObj;
+		newObj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 	}
 }
