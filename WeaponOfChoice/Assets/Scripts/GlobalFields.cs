@@ -5,10 +5,10 @@ using UnityEngine;
 public static class GlobalFields
 {
 	#region weapons selection
-    public static WeaponsTypes First { private get; set; } = WeaponsTypes.Tentacle;
+    public static WeaponsTypes First { private get; set; } = WeaponsTypes.PenguinLouncher;
 	static bool firstTaken = false;
 	static bool somethingTaken = false;
-	public static WeaponsTypes Second { private get; set; } = WeaponsTypes.Tentacle;
+	public static WeaponsTypes Second { private get; set; } = WeaponsTypes.PenguinLouncher;
 	public static WeaponsTypes GetWeapon()
 	{
 		if (somethingTaken)
