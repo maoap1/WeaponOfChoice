@@ -11,8 +11,10 @@ public class WeaponsSelector : MonoBehaviour
 	GameObject RightKey { get => keysPictures[1]; set => keysPictures[1] = value; }
 	GameObject LeftKey { get => keysPictures[2]; set => keysPictures[2] = value; }
 	public GameObject Base;
-	public float WaitingTime;
+	public float WaitingTime = GlobalFields.WeaponChooseCounterTime;
 	public float weaponChoosingTime = 1;
+
+	public GameObject textDisplayer;
 
 	public GameObject sceneFader;
 
@@ -42,7 +44,7 @@ public class WeaponsSelector : MonoBehaviour
 
 	void Update()
 	{
-		if (Time.timeSinceLevelLoad > startTime + WaitingTime && state == 0)
+		if (Time.timeSinceLevelLoad > WaitingTime && state == 0)
 		{
 			state++;
 			usedTime = Time.timeSinceLevelLoad;
@@ -55,6 +57,8 @@ public class WeaponsSelector : MonoBehaviour
 				{ }
 				usedIndexes.Add(currIndex);
 			}
+			if(textDisplayer != null)
+				textDisplayer.GetComponent<ChooseWeaponTextDisplayer>().Proceed();
 			for (int i = 0; i < keysPictures.Length; i++)
 				InstantiateWithPosOf(weaponsBase.WeaponsPrefabs[usedIndexes[
 					Mathf.Min(i, usedIndexes.Count - 1)]], transform, i);
@@ -73,7 +77,7 @@ public class WeaponsSelector : MonoBehaviour
 			else
 				throw new System.Exception("That doesn't make sense! :O");
 			GlobalFields.SetWeapon(weaponsBase.GetWeaponTypeOf(
-					weapons[index].GetComponent<Weapon>()));
+					weapons[index].GetComponent<Weapon>()), gameObject.layer - 9);
 			for(int i = 0; i < keysPictures.Length; i++)
 				if(i != index)
 				{
@@ -85,7 +89,7 @@ public class WeaponsSelector : MonoBehaviour
 		{
 			state++;
 			GlobalFields.SetWeapon(weaponsBase.GetWeaponTypeOf(
-					weapons[Random.Range(0, maximalNumberOfWeapons)].GetComponent<Weapon>()));
+					weapons[Random.Range(0, maximalNumberOfWeapons)].GetComponent<Weapon>()), gameObject.layer - 9);
 			timesUsed++;
 		}
 		if (state == 2 && timesUsed > 1)

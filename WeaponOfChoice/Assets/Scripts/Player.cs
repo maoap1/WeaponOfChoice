@@ -57,18 +57,19 @@ public class Player : MonoBehaviour
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
-        WeaponPrefab = WeaponsBase.GetComponent<BaseOfWeapons>().GetWeaponThatIs(GlobalFields.GetWeapon());
-        WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
-        Weapon.Player = this;
-		WeaponPrefab.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-
 		string player = gameObject.layer == 9 ? "setPlayer0" : "setPlayer1"; // 9 is Player0 layer
         legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
         legAnimator.SetTrigger(player);
         bodyAnimator = gameObject.transform.Find("Body").gameObject.GetComponent<Animator>();
         bodyAnimator.SetTrigger(player);
 
-        if (player == "setPlayer1")
+		WeaponPrefab = WeaponsBase.GetComponent<BaseOfWeapons>().GetWeaponThatIs(
+			GlobalFields.GetWeapon( int.Parse(string.Empty + player[player.Length - 1])));
+		WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
+		Weapon.Player = this;
+		WeaponPrefab.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+
+		if (player == "setPlayer1")
         {
             lookingAt = Side.Left;
             gameObject.transform.localScale = new Vector3(

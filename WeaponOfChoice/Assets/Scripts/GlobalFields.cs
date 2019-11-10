@@ -1,64 +1,38 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public static class GlobalFields
 {
+
+	public static float WeaponChooseCounterTime = 2f;
+
 	#region weapons selection
-    public static WeaponsTypes First { private get; set; } = WeaponsTypes.Fork;
-	static bool firstTaken = false;
-	static bool somethingTaken = false;
-	public static WeaponsTypes Second { private get; set; } = WeaponsTypes.Palcat;
-	public static WeaponsTypes GetWeapon()
+    public static WeaponsTypes WeaponPlayer0 { private get; set; } = WeaponsTypes.Fork;
+	public static WeaponsTypes WeaponPlayer1 { private get; set; } = WeaponsTypes.Palcat;
+	public static WeaponsTypes GetWeapon(int playerNum)
 	{
-		if (somethingTaken)
-		{
-			somethingTaken = false;
-			if (firstTaken)
-			{
-				firstTaken = false;
-				return Second;
-			}
-			else
-				return First;
-		}
+		if (playerNum == 0)
+			return WeaponPlayer0;
+		else if (playerNum == 1)
+			return WeaponPlayer1;
 		else
-		{
-			somethingTaken = true;
-			if (Random.Range(0,2) == 0)
-			{
-				firstTaken = true;
-				return First;
-			}
-			else
-				return Second;
-		}
+			throw new NotImplementedException();
 	}
-	public static void SetWeapon(WeaponsTypes wt)
+
+	public static bool swap = false;
+
+	public static void SetWeapon(WeaponsTypes wt, int playerNum)
 	{
-		Debug.Log(wt.ToString());
-		if (somethingTaken)
-		{
-			somethingTaken = false;
-			if (firstTaken)
-			{
-				firstTaken = false;
-				Second = wt;
-			}
-			else
-				First = wt;
-		}
+		if (swap)
+			playerNum = playerNum * (-1) + 1;
+		if (playerNum == 0)
+			WeaponPlayer0 = wt;
+		else if (playerNum == 1)
+			WeaponPlayer1 = wt;
 		else
-		{
-			somethingTaken = true;
-			if (Random.Range(0,2) == 0)
-			{
-				firstTaken = true;
-				First = wt;
-			}
-			else
-				Second = wt;
-		}
+			throw new NotImplementedException();
 	}
 	#endregion
 

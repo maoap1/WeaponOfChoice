@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SecondsCounter : MonoBehaviour
 {
-	public List<GameObject> counterMarks;
+	public List<GameObject> counterMarks = new List<GameObject>((int)GlobalFields.WeaponChooseCounterTime);
 
 	GameObject instantiated;
 
@@ -13,9 +13,10 @@ public class SecondsCounter : MonoBehaviour
     {
 		if (instantiated != null)
 			Destroy(instantiated);
-        if(Time.timeSinceLevelLoad  < counterMarks.Count)
+        if(Time.timeSinceLevelLoad  < GlobalFields.WeaponChooseCounterTime)
 		{
-			instantiated = Instantiate(counterMarks[Mathf.Max(0,(int)Time.timeSinceLevelLoad)], transform);
+			instantiated = Instantiate(counterMarks[Mathf.Max(0,
+				(int)(Time.timeSinceLevelLoad * (counterMarks.Count / GlobalFields.WeaponChooseCounterTime)))], transform);
 		}
     }
 }
