@@ -5,5 +5,6 @@ using UnityEngine;
 public enum WeaponsTypes
 {
    Nokia,
-   Toaster
+   Toaster,
+   Tentacle
 }
