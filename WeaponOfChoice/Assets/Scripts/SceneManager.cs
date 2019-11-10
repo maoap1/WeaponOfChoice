@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SceneManager : MonoBehaviour
 {
 
-	static float fadingTime = 0.25f;
+	static float fadingTime = 0.45f;
 
 	public GameObject fadingPic;
 	bool startFading = true;
@@ -60,12 +60,12 @@ public class SceneManager : MonoBehaviour
 			else
 				fader.MoveNext();
 		}
-		if (FadeAtEnd)
-		{
+        if (FadeAtEnd)
+        {
 			if (Time.timeSinceLevelLoad > endTime + fadingTime)
 				UnityEngine.SceneManagement.SceneManager.LoadScene(newSceneName);
 			else
-				end = false;
+				fader.MoveNext();
 		}
 	}
 }

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private Animator legAnimator;
     private Animator bodyAnimator;
 
-    public Side LookingAt { get; private set; } = Side.Right;
+    public Side lookingAt = Side.Right;
     GameObject WeaponPrefab;
     private Weapon Weapon => WeaponPrefab.GetComponent<Weapon>();
 
@@ -64,6 +64,15 @@ public class Player : MonoBehaviour
         legAnimator.SetTrigger(player);
         bodyAnimator = gameObject.transform.Find("Body").gameObject.GetComponent<Animator>();
         bodyAnimator.SetTrigger(player);
+
+        if (player == "setPlayer1")
+        {
+            lookingAt = Side.Left;
+            gameObject.transform.localScale = new Vector3(
+                        -1 * gameObject.transform.localScale.x,
+                        gameObject.transform.localScale.y
+                        );
+        }
 
 		switch (Weapon)
 		{
@@ -141,9 +150,9 @@ public class Player : MonoBehaviour
 
 			if (Input2.Horizontal != 0)
 			{
-				Side old = LookingAt;
-				LookingAt = (Side)(int)(Mathf.Abs(Input2.Horizontal) / Input2.Horizontal);
-				if (old != LookingAt)
+				Side old = lookingAt;
+				lookingAt = (Side)(int)(Mathf.Abs(Input2.Horizontal) / Input2.Horizontal);
+				if (old != lookingAt)
 					gameObject.transform.localScale = new Vector3(
 						-1 * gameObject.transform.localScale.x,
 						gameObject.transform.localScale.y
