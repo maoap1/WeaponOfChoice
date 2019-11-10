@@ -21,6 +21,11 @@ public abstract class Weapon : MonoBehaviour
 	public Vector3 ProjectileStartingAngle = new Vector3(1, 0, 0); 
 	public float ProjectileGravityScale = 0.15f;
 	float lastTimeAttacked = int.MinValue;
+
+	private void Start()
+	{
+		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+	}
 	public bool Attack()
 	{
 		if (lastTimeAttacked + reloadTime < Time.timeSinceLevelLoad)
