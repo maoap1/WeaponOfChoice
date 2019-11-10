@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadTime: 0.45
-  attackStrength: 10
+  attackStrength: 17
   MakeAtLocalPosition: {x: 1.7, y: 1.526695, z: 0}
   audioSource: {fileID: 0}
   audioClips:

@@ -192,13 +192,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadTime: 0.8
-  attackStrength: 10
-  MakeAtLocalPosition: {x: 0, y: 0, z: 0}
+  attackStrength: 25
+  MakeAtLocalPosition: {x: 2.45, y: 1.635714, z: 0}
   audioSource: {fileID: 0}
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 98ed9142806956645ab4f654699b652a, type: 3}
+  - {fileID: 8300000, guid: bc61efe8e6dbd2741b8a9eac8f80d96e, type: 3}
+  - {fileID: 8300000, guid: 504815eb9c8b8b842b40df7d1aeac3c5, type: 3}
+  - {fileID: 8300000, guid: 98e63ec47c24cf541bcae1a33f8e5b59, type: 3}
   Projectile: {fileID: 2124903942494534445, guid: 4252bb1750b657f49874936c48b08661,
     type: 3}
   ProjectileDiesAfter: 500000
-  projectileSpeed: 20
+  projectileSpeed: 8
   ProjectileStartingAngle: {x: 1, y: 0, z: 0}
-  ProjectileGravityScale: 0.6
+  ProjectileGravityScale: 1.5

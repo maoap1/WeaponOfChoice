@@ -57,6 +57,10 @@ public abstract class Weapon : MonoBehaviour
 				projectile.GetComponent<SpriteRenderer>().color.g,
 				projectile.GetComponent<SpriteRenderer>().color.b,
 				ProjectileAlpha);
+			projectile.transform.localScale = new Vector3(
+				(int)Player.lookingAt * projectile.transform.localScale.x,
+				projectile.transform.localScale.y
+				);
 			projectile.StartingAngle = ProjectileStartingAngle; 
 			projectile.dieAtDistance = ProjectileDiesAfter;
 			projectile.GravityScale = ProjectileGravityScale;
