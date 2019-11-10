@@ -46,7 +46,7 @@ public abstract class Weapon : MonoBehaviour
 			{
 				projectile =
 				Instantiate(Projectile,
-				GetComponent<Transform>().position + new Vector3(MakeAtLocalPosition.x * (int)Player.LookingAt,
+				GetComponent<Transform>().position + new Vector3(MakeAtLocalPosition.x * (int)Player.lookingAt,
 					MakeAtLocalPosition.y),
 				GetComponent<Transform>().rotation)
 				.GetComponent<ProjectileBehaviour>();
@@ -60,7 +60,7 @@ public abstract class Weapon : MonoBehaviour
 			projectile.dieAtDistance = ProjectileDiesAfter;
 			projectile.GravityScale = ProjectileGravityScale;
 			projectile.Shooter = Player;
-			projectile.AimingAt = Player.LookingAt;
+			projectile.AimingAt = Player.lookingAt;
 			projectile.Speed = projectileSpeed;
 			projectile.damage = attackStrength;
 			return true;
