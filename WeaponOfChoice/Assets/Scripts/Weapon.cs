@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-	public Player pc { set; protected get; }
+	public Player Player { set; protected get; }
 	public virtual float reloadTime => 0.8f;
 	public virtual int attackStrength => 10;
 	protected abstract bool Melee { get; }
@@ -29,14 +29,14 @@ public abstract class Weapon : MonoBehaviour
 				Instantiate(Projectile,
 				GetComponent<Transform>().position + MakeAtLocalPosition,
 				GetComponent<Transform>().rotation,
-				pc.transform)
+				Player.transform)
 				.GetComponent<ProjectileBehaviour>();
 			}
 			else
 			{
 				projectile =
 				Instantiate(Projectile,
-				GetComponent<Transform>().position + new Vector3(MakeAtLocalPosition.x * (int)pc.LookingAt,
+				GetComponent<Transform>().position + new Vector3(MakeAtLocalPosition.x * (int)Player.LookingAt,
 					MakeAtLocalPosition.y),
 				GetComponent<Transform>().rotation)
 				.GetComponent<ProjectileBehaviour>();
@@ -49,8 +49,8 @@ public abstract class Weapon : MonoBehaviour
 			projectile.StartingAngle = ProjectileStartingAngle; 
 			projectile.dieAtDistance = ProjectileDiesAfter;
 			projectile.GravityScale = ProjectileGravityScale;
-			projectile.Shooter = pc;
-			projectile.AimingAt = pc.LookingAt;
+			projectile.Shooter = Player;
+			projectile.AimingAt = Player.LookingAt;
 			projectile.Speed = projectileSpeed;
 			projectile.damage = attackStrength;
 			return true;

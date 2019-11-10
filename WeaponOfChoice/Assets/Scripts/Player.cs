@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 
         WeaponPrefab = WeaponsBase.GetComponent<BaseOfWeapons>().GetWeaponThatIs(GlobalFields.GetWeapon());
         WeaponPrefab = Instantiate(WeaponPrefab, GetComponent<Transform>());
-        Weapon.pc = this;
+        Weapon.Player = this;
 
         string player = gameObject.layer == 9 ? "setPlayer0" : "setPlayer1"; // 9 is Player0 layer
         legAnimator = gameObject.transform.Find("Leg").gameObject.GetComponent<Animator>();
