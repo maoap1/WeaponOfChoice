@@ -5,17 +5,19 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
 	public Player Player { set; protected get; }
-	public virtual float reloadTime => 0.8f;
-	public virtual int attackStrength => 10;
-	protected abstract bool Melee { get; }
-	public virtual Vector3 MakeAtLocalPosition => new Vector3(0, 0, 0);
+	public float reloadTime = 0.8f;
+	public int attackStrength = 10;
+	public Vector3 MakeAtLocalPosition = new Vector3(0, 0, 0);
 
-	public float ProjectileAlpha => Melee ? 0 : 1;
+    protected abstract bool Melee { get; }
+
+
+    public virtual float ProjectileAlpha => Melee ? 0 : 1;
 	public GameObject Projectile;
-	public virtual float ProjectileDiesAfter => 500_000;
-	public virtual int projectileSpeed => 5;
-	public virtual Vector3 ProjectileStartingAngle => new Vector3(1, 0, 0); 
-	public virtual float ProjectileGravityScale => 0.15f;
+	public float ProjectileDiesAfter = 500_000;
+	public int projectileSpeed = 5;
+	public Vector3 ProjectileStartingAngle = new Vector3(1, 0, 0); 
+	public float ProjectileGravityScale = 0.15f;
 	float lastTimeAttacked = int.MinValue;
 	public bool Attack()
 	{
