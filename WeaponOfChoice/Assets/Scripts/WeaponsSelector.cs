@@ -97,7 +97,8 @@ public class WeaponsSelector : MonoBehaviour
 		if (state == 3)
 		{
 			state++;
-			sceneFader.GetComponent<SceneManager>().LoadScene("Fight");
+            string sceneToLoad = Random.Range(0, 2) == 1 ? "FightDesert" : "FightCity";
+            sceneFader.GetComponent<SceneManager>().LoadScene(sceneToLoad);
 		}
 	}
 	private void InstantiateWithPosOf(GameObject weaponToInstantiate, Transform parent, int positionerIndex)

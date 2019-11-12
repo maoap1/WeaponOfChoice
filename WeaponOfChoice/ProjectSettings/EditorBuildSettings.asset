@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/WeaponChoosing.unity
     guid: cfd3b06bb71276b4c9b56636bd43910a
   - enabled: 1
-    path: Assets/Scenes/Fight.unity
+    path: Assets/Scenes/FightDesert.unity
     guid: cdd1da7a824cf8345a594870cd6dcd63
+  - enabled: 1
+    path: Assets/Scenes/FightCity.unity
+    guid: 20a7b83002c2a3a49a0f0bbc61c04e16
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: bce42fa9060165f4fa06ff4beddcd333
